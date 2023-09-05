@@ -69,6 +69,7 @@ type Brand {
   sector: [Sector!]
   adAccounts: [String!]
   socialAccounts: [String!]
+  brandStatus: [String!]
   businessAccount: BusinessAccount!
 }
 

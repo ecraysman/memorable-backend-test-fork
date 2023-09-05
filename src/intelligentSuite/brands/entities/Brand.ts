@@ -4,6 +4,7 @@ import {BaseEntity} from "../../../common/entities/BaseEntity";
 import {BusinessAccount} from "../../businessAccounts/entities/BusinessAccount";
 import {Sector} from "../../common/entities/Sector";
 import {CreateBrandInput, UpdateBrandInput} from "../input/BrandInput";
+import {BrandStatus} from "./BrandStatus";
 
 @ObjectType()
 @Entity()
@@ -27,6 +28,10 @@ export default class Brand extends BaseEntity {
     @Field(() => [String], {nullable: true})
     @Column({type: "simple-array", nullable: true})
     socialAccounts?: string[];
+
+    @Field(() => [String], {nullable: true})
+    @Column({type: "simple-array", nullable: true})
+    brandStatus?: BrandStatus[];
 
     @ManyToOne(() => BusinessAccount)
     @Field(() => BusinessAccount)
