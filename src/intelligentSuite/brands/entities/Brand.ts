@@ -3,7 +3,7 @@ import {Column, Entity, ManyToOne} from "typeorm";
 import {BaseEntity} from "../../../common/entities/BaseEntity";
 import {BusinessAccount} from "../../businessAccounts/entities/BusinessAccount";
 import {Sector} from "../../common/entities/Sector";
-import {CreateBrandInput, UpdateBrandInput} from "../input/BrandInput";
+import {CreateBrandInput, UpdateBrandInput, UpdateBrandStatusInput} from "../input/BrandInput";
 import {BrandStatus} from "./BrandStatus";
 
 @ObjectType()
@@ -29,9 +29,9 @@ export default class Brand extends BaseEntity {
     @Column({type: "simple-array", nullable: true})
     socialAccounts?: string[];
 
-    @Field(() => [String], {nullable: true})
+    @Field(() => [BrandStatus], {nullable: true})
     @Column({type: "simple-array", nullable: true})
-    brandStatus?: BrandStatus[];
+    status?: BrandStatus[];
 
     @ManyToOne(() => BusinessAccount)
     @Field(() => BusinessAccount)
@@ -51,6 +51,10 @@ export default class Brand extends BaseEntity {
         this.name = input.name || this.name;
         this.sector = input.sector || this.sector;
         this.logoUrl = input.logoUrl || this.logoUrl;
+    }
+
+    updateStatus(input: UpdateBrandStatusInput) {
+        this.status = input.status || this.status;
     }
 }
 
