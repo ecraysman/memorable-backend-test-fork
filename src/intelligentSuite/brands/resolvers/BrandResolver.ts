@@ -9,7 +9,6 @@ import {BrandAssetsResponse} from "../entities/BrandAssetsResponse";
 import {BrandAssetsInput, CreateBrandInput, UpdateBrandInput, UpdateBrandStatusInput} from "../input/BrandInput";
 import {BrandAccountsService} from "../service/BrandAccountsService";
 import {BrandService} from "../service/BrandService";
-// import {BrandStatus} from "../entities/BrandStatus";
 
 @Service()
 @Resolver()
