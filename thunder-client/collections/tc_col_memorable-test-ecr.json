@@ -1,0 +1,203 @@
+{
+    "_id": "36dc6c7e-40fd-46dc-b79f-de81a07ac99f",
+    "colName": "memorable-test-ecr",
+    "created": "2023-09-04T18:22:23.086Z",
+    "sortNum": 10000,
+    "folders": [],
+    "requests": [
+        {
+            "_id": "ba86598d-70fb-4300-ad78-3dbb7c4fc925",
+            "colId": "36dc6c7e-40fd-46dc-b79f-de81a07ac99f",
+            "containerId": "",
+            "name": "basic login NOADMIN",
+            "url": "{{baseUrl}}",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-09-04T18:22:37.269Z",
+            "modified": "2023-09-06T03:11:22.786Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "graphql",
+                "raw": "",
+                "form": [],
+                "graphql": {
+                    "query": "mutation ($authInput: AuthenticationInput!) {\n  logIn(input: $authInput) {\n    sessionToken\n  }\n}",
+                    "variables": "{\n  \"authInput\": {\n    \"email\": \"localuser@memorable.io\",\n    \"password\": \"LocalUser!!!98\"\n  }\n}"
+                }
+            },
+            "tests": [
+                {
+                    "type": "set-env-var",
+                    "custom": "json.data.logIn.sessionToken",
+                    "action": "setto",
+                    "value": "{{variable}}"
+                }
+            ]
+        },
+        {
+            "_id": "05fb9e7d-c305-4d45-8dfa-cb12b1dc80e0",
+            "colId": "36dc6c7e-40fd-46dc-b79f-de81a07ac99f",
+            "containerId": "",
+            "name": "getLoggedInUser",
+            "url": "{{baseUrl}}",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-09-06T03:12:00.696Z",
+            "modified": "2023-09-06T03:12:31.530Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "graphql",
+                "raw": "",
+                "form": [],
+                "graphql": {
+                    "query": "{\n  getLoggedInUser {\n    id\n    name\n    email\n    isAdmin\n    businessAccount {\n      id\n      businessName\n      businessLogoUrl\n      businessPhone\n      website\n      address\n      brands {\n        id\n        name\n        logoUrl\n        sector\n        status\n        adAccounts\n        socialAccounts\n      }\n    }\n  }\n}"
+                }
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{variable}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "1e67f960-f58a-4530-8682-d511ab097eb3",
+            "colId": "36dc6c7e-40fd-46dc-b79f-de81a07ac99f",
+            "containerId": "",
+            "name": "update User Data",
+            "url": "{{baseUrl}}",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-09-06T03:21:08.183Z",
+            "modified": "2023-09-06T03:23:07.120Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "graphql",
+                "raw": "",
+                "form": [],
+                "graphql": {
+                    "query": "mutation ($userProfileInput: UserProfileInput!) {\n  updateUserProfile(input: $userProfileInput) {\n    name\n    email\n  }\n}",
+                    "variables": "{\n  \"userProfileInput\": {\n    \"name\": \"localUser\",\n    \"currentPassword\": \"LocalUser!!!98\",\n    \"newPassword\": \"LocalUser!!!98\"\n  }\n}"
+                }
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{variable}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "43581d9a-6fdc-4720-a4b8-46daa60aed70",
+            "colId": "36dc6c7e-40fd-46dc-b79f-de81a07ac99f",
+            "containerId": "",
+            "name": "CreateBrand",
+            "url": "{{baseUrl}}",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2023-09-06T03:23:43.133Z",
+            "modified": "2023-09-06T04:57:08.463Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "graphql",
+                "raw": "",
+                "form": [],
+                "graphql": {
+                    "query": "mutation createBrand($brand: CreateBrandInput!) {\n  createBrand(input: $brand) {\n    id\n    name\n    createdAt\n    logoUrl\n    sector\n  }\n}",
+                    "variables": "{\n  \"brand\": {\n    \"name\": \"TESTEZE123123123\",\n    \"sector\": [\n      \"PharmaceuticalsAndBiotechnology\"\n    ],\n    \"logoUrl\": \"logoUrl\"\n    \n  }\n}"
+                }
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{variable}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "c847d200-7c96-49a3-88b2-b39ef73ba132",
+            "colId": "36dc6c7e-40fd-46dc-b79f-de81a07ac99f",
+            "containerId": "",
+            "name": "update Brand",
+            "url": "{{baseUrl}}",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2023-09-06T03:31:06.964Z",
+            "modified": "2023-09-06T04:59:20.244Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "graphql",
+                "raw": "",
+                "form": [],
+                "graphql": {
+                    "query": "mutation updateBrand($brandId: String!, $brand: UpdateBrandInput!) {\n  updateBrand(brandId: $brandId, input: $brand) {\n    id\n    name\n    createdAt\n    logoUrl\n    sector\n  }\n}",
+                    "variables": "{\n  \"brand\": {\n    \"name\": \"Pharma Global\",\n    \"logoUrl\": \"logoUrl\",\n    \"sector\": [\n      \"Utilities\"\n    ]\n  },\n  \"brandId\": \"01H9MDKDGRYPF1B837ECVPD2FK\"\n}"
+                }
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{variable}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "66651744-ae88-448e-8dcd-565dd6be8e29",
+            "colId": "36dc6c7e-40fd-46dc-b79f-de81a07ac99f",
+            "containerId": "",
+            "name": "update Brand STATUS",
+            "url": "{{baseUrl}}",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2023-09-06T04:08:15.825Z",
+            "modified": "2023-09-06T04:59:43.133Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "graphql",
+                "raw": "",
+                "form": [],
+                "graphql": {
+                    "query": "mutation updateBrandStatus($brandId: String!, $brand: UpdateBrandStatusInput!) {\n  updateBrandStatus(brandId: $brandId, input: $brand) {\n    status\n  }\n}",
+                    "variables": "{\n  \"brand\": {\n    \"status\": \"READY\"\n  },\n  \"brandId\": \"01H9M8GM5RNBSQ539NC2DQNWPF\"\n}"
+                }
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{variable}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "c34e3a4f-bdaa-4c85-8185-16687c95cffa",
+            "colId": "36dc6c7e-40fd-46dc-b79f-de81a07ac99f",
+            "containerId": "",
+            "name": "basic login ADMIN",
+            "url": "{{baseUrl}}",
+            "method": "POST",
+            "sortNum": 15000,
+            "created": "2023-09-06T04:18:20.975Z",
+            "modified": "2023-09-06T04:18:20.975Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "graphql",
+                "raw": "",
+                "form": [],
+                "graphql": {
+                    "query": "mutation ($authInput: AuthenticationInput!) {\n  logIn(input: $authInput) {\n    sessionToken\n  }\n}",
+                    "variables": "{\n  \"authInput\": {\n    \"email\": \"localuser@memorable.io\",\n    \"password\": \"LocalUser!!!98\"\n  }\n}"
+                }
+            },
+            "tests": [
+                {
+                    "type": "set-env-var",
+                    "custom": "json.data.logIn.sessionToken",
+                    "action": "setto",
+                    "value": "{{variable}}"
+                }
+            ]
+        }
+    ]
+}
