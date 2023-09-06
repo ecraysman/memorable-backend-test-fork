@@ -29,7 +29,7 @@ export default class Brand extends BaseEntity {
     @Column({type: "simple-array", nullable: true})
     socialAccounts?: string[];
 
-    @Field(() => [BrandStatus], {nullable: true})
+    @Field(() => BrandStatus, {nullable: true})
     @Column({type: "simple-array", nullable: true})
     status?: BrandStatus[];
 
