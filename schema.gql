@@ -191,7 +191,6 @@ input CreateBrandInput {
   name: String!
   logoUrl: String
   sector: [Sector!]!
-  status: BrandStatus!
 }
 
 input UpdateBrandInput {

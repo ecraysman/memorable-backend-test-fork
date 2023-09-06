@@ -5,6 +5,7 @@ import {UploadDataResponse} from "../../fileHandler/entities/UploadDataResponse"
 import {FileHandlerService} from "../../fileHandler/service/FileHandlerService";
 import {User} from "../../users/entities/User";
 import Brand from "../entities/Brand";
+import {BrandStatus} from "../entities/BrandStatus";
 import {CreateBrandInput, UpdateBrandInput, UpdateBrandStatusInput} from "../input/BrandInput";
 import {BrandRepository} from "../repository/BrandRepository";
 
@@ -22,6 +23,8 @@ export class BrandService extends BaseService {
         this.validateUserAdmin(user, this.createBrand.name);
 
         const brand = Brand.create(user.getBusinessAccount(), input);
+
+        brand.status = [BrandStatus.READY]; //Default Values
         await this.brandRepository.save(brand);
 
         this.logger.debug(this.createBrand.name, `Created brand successfully`);

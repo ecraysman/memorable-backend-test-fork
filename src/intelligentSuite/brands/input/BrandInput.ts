@@ -11,8 +11,6 @@ export class CreateBrandInput {
     logoUrl?: string;
     @Field(() => [Sector])
     sector!: Sector[];
-    @Field(() => BrandStatus)
-    status?: BrandStatus[];
 }
 
 @InputType()
