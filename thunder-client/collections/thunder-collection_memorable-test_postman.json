@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "0e6de132-fcc5-482f-8a42-7f310fd1f70b",
+        "_postman_id": "16f3015e-d652-4b14-b8a1-a6a755c85a08",
         "name": "memorable-test",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -95,8 +95,8 @@
                 "body": {
                     "mode": "graphql",
                     "graphql": {
-                        "query": "mutation createBrand($brand: CreateBrandInput!) {\n  createBrand(input: $brand) {\n    id\n    name\n    createdAt\n    logoUrl\n    sector\n    status\n  }\n}",
-                        "variables": "{\n  \"brand\": {\n    \"name\": \"Pharma Global11 2\",\n    \"sector\": [\n      \"PharmaceuticalsAndBiotechnology\"\n    ],\n    \"logoUrl\": \"logoUrl\",\n    \"status\": \"READY\"\n  }\n}"
+                        "query": "mutation createBrand($brand: CreateBrandInput!) {\n  createBrand(input: $brand) {\n    id\n    name\n    createdAt\n    logoUrl\n    sector\n  }\n}",
+                        "variables": "{\n  \"brand\": {\n    \"name\": \"TESTEZE123123123\",\n    \"sector\": [\n      \"PharmaceuticalsAndBiotechnology\"\n    ],\n    \"logoUrl\": \"logoUrl\"\n    \n  }\n}"
                     }
                 },
                 "auth": {
@@ -125,7 +125,7 @@
                     "mode": "graphql",
                     "graphql": {
                         "query": "mutation updateBrand($brandId: String!, $brand: UpdateBrandInput!) {\n  updateBrand(brandId: $brandId, input: $brand) {\n    id\n    name\n    createdAt\n    logoUrl\n    sector\n  }\n}",
-                        "variables": "{\n  \"brand\": {\n    \"name\": \"Pharma Global\",\n    \"logoUrl\": \"logoUrl\",\n    \"sector\": [\n      \"Utilities\"\n    ]\n  },\n  \"brandId\": \"01H2Q81MZ45Y2FVD2KB0SDTMXR\"\n}"
+                        "variables": "{\n  \"brand\": {\n    \"name\": \"Pharma Global\",\n    \"logoUrl\": \"logoUrl\",\n    \"sector\": [\n      \"Utilities\"\n    ]\n  },\n  \"brandId\": \"01H9MDKDGRYPF1B837ECVPD2FK\"\n}"
                     }
                 },
                 "auth": {
@@ -154,7 +154,7 @@
                     "mode": "graphql",
                     "graphql": {
                         "query": "mutation updateBrandStatus($brandId: String!, $brand: UpdateBrandStatusInput!) {\n  updateBrandStatus(brandId: $brandId, input: $brand) {\n    status\n  }\n}",
-                        "variables": "{\n  \"brand\": {\n    \"status\": \"READY\"\n  },\n  \"brandId\": \"01H9M8HXDWVWHD1B21TYJJW0B6\"\n}"
+                        "variables": "{\n  \"brand\": {\n    \"status\": \"READY\"\n  },\n  \"brandId\": \"01H9M8GM5RNBSQ539NC2DQNWPF\"\n}"
                     }
                 },
                 "auth": {
