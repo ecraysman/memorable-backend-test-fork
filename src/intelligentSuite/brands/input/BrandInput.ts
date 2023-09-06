@@ -14,12 +14,6 @@ export class CreateBrandInput {
 }
 
 @InputType()
-export class UpdateBrandStatusInput {
-    @Field(() => BrandStatus)
-    status?: BrandStatus[];
-}
-
-@InputType()
 export class UpdateBrandInput {
     @Field(() => String, {nullable: true})
     name?: string;
@@ -30,6 +24,13 @@ export class UpdateBrandInput {
     @Field(() => [Sector], {nullable: true})
     sector?: Sector[];
 }
+
+@InputType()
+export class UpdateBrandStatusInput {
+    @Field(() => BrandStatus)
+    status?: BrandStatus[];
+}
+
 @InputType()
 export class BrandAssetsInput {
     @Field(() => [AdAccountInput], {nullable: true})

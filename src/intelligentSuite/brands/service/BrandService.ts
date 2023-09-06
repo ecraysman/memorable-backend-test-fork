@@ -42,18 +42,6 @@ export class BrandService extends BaseService {
         return updatedBrand;
     }
 
-    async getLogoUploadData(user: User, uploadRequest: UploadRequestInput): Promise<UploadDataResponse> {
-        this.logger.verbose(this.getLogoUploadData.name, `Getting logo upload data for user`, {user: user.email});
-        const businessAccountId = user.getBusinessAccount().id;
-        const result = await this.fileHandlerService.getLogoUploadData(
-            businessAccountId,
-            uploadRequest.mimeType,
-            uploadRequest.extension,
-        );
-        this.logger.debug(this.getLogoUploadData.name, `Got logo upload data successfully`);
-        return result;
-    }
-
     async updateBrandStatus(user: User, brandId: string, input: UpdateBrandStatusInput) {
         this.logger.verbose(this.createBrand.name, `Updating brand status for user`, {user: user.email});
         this.validateUserAdmin(user, this.createBrand.name);
@@ -64,5 +52,17 @@ export class BrandService extends BaseService {
 
         this.logger.debug(this.updateBrand.name, `Updated brand status successfully`);
         return updatedBrand;
+    }
+
+    async getLogoUploadData(user: User, uploadRequest: UploadRequestInput): Promise<UploadDataResponse> {
+        this.logger.verbose(this.getLogoUploadData.name, `Getting logo upload data for user`, {user: user.email});
+        const businessAccountId = user.getBusinessAccount().id;
+        const result = await this.fileHandlerService.getLogoUploadData(
+            businessAccountId,
+            uploadRequest.mimeType,
+            uploadRequest.extension,
+        );
+        this.logger.debug(this.getLogoUploadData.name, `Got logo upload data successfully`);
+        return result;
     }
 }
