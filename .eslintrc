@@ -14,7 +14,9 @@
     "rules": {
         "@typescript-eslint/no-unused-vars": [2, {"args": "all", "argsIgnorePattern": "^_"}],
         "eol-last": [2, "always"],
-        "prettier/prettier": ["error"],
+        "prettier/prettier": ["error",  {
+            "endOfLine": "auto"
+          }],
         "@typescript-eslint/switch-exhaustiveness-check": "error",
         "@typescript-eslint/await-thenable": "error",
         "@typescript-eslint/no-confusing-non-null-assertion": "error",
